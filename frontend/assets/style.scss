@@ -1,44 +1,190 @@
 $secondary-color: #F0C900;
+$reduction: #09A722;
+$font-color: #EEEEEE;
+$dark: #0F0F0F;
+$white: #FFFFFF;
+$sneaker-width: clamp(300px, 22%, 450px);
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+  font-family: 'Exo 2', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
 
 * {
   margin: 0;
   padding: 0;
+  a {
+    text-decoration: none;
+  }
 }
 
 .main {
+  position: relative;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  overflow: hidden;
 
   .main-img {
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
   }
   .btn-to-sneakers {
-    padding: 22px 50px;
+    position: absolute;
+    bottom: calc(20px + 1.8vw);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: calc(15px + .5vw) calc(24px + .8vw);
+    width: max-content;
     border-radius: 12px;
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: calc(24px + .8vw);
+    color: $dark;
     background-color: $secondary-color;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset,
+                rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset,
+                rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px,
+                rgb(38, 57, 77) 0px 20px 30px -10px;
+    cursor: pointer;
   }
 }
 
 .sneakers-list {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
+  justify-content: center;
   padding: 2.5rem 1.5rem;
+  margin-bottom: 7rem;
+  background-color: $white;
 
   .sneaker {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: $sneaker-width;
     padding: 10px;
-    aspect-ratio: 4/3;
-    gap: .5rem;
+    aspect-ratio: 1/1;
+    gap: calc(5px + .2vw);
+    border-radius: calc(2px + .2vw);
+    overflow: hidden;
+
+    @media screen and (max-width: 765px) {
+      width: min(70%, 310px);
+    }
+    @media screen and (max-width: 450px) {
+      width: 85%;
+    }
 
     .sneaker-img-ctn {
+      position: relative;
+      width: 80%;
+      aspect-ratio: 600/360;
 
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .reduction {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: calc(12px + .2vw);
+        left: calc(12px + .2vw);
+        aspect-ratio: 1/1;
+        width: calc(30px + 1.3vw);
+        background-color: $secondary-color;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
+
+        .reduction-ctn {
+          font-family: "Exo 2", sans-serif;
+          font-optical-sizing: auto;
+          font-style: normal;
+          font-size: calc(10px + .4vw);
+          font-weight: 650;
+          transform: rotate(-15deg);
+          color: $reduction;
+        }
+      }
+    }
+    .sneaker-info {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: "Exo 2", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      gap: .5rem;
+
+      .sneaker-name {
+        font-size: calc(16px + .2vw);
+        font-weight: 500;
+      }
+      .sneaker-price {
+        display: flex;
+        align-items: flex-end;
+        gap: 1rem;
+
+        .price,
+        .new-price {
+          font-size: calc(16px + .2vw);
+          font-weight: 580;
+        }
+        .previous-price {
+          text-decoration: line-through;
+          font-weight: 370;
+          font-size: calc(15px + .2vw);
+        }
+      }
+    }
+    .filler {
+      flex: 1 2 auto;
+    }
+    .sneaker-btn {
+      visibility: hidden;
+      display: flex;
+      width: 80%;
+      flex-direction: column;
+      text-align: center;
+      cursor: pointer;
+      font-family: "Exo 2", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      line-height: normal;
+      font-size: calc(16px + .2vw);
+      font-weight: 580;
+      border-radius: calc(2px + .2vw);
+      padding: calc(4px + .2vw) 0;
+      margin-bottom: calc(4px + .2vw);
+      background-color: $secondary-color;
+      color: $dark;
+      box-shadow: rgba(0, 0, 0, 0.19) 0 5px 10px, rgba(0, 0, 0, 0.23) 0 4px 4px;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: opacity 300ms linear 250ms, transform 280ms ease-in 100ms;
+    }
+    &:hover {
+      box-shadow: rgba(6, 24, 44, 0.4) 0 0 0 2px, rgba(6, 24, 44, 0.65) 0 4px 6px -1px, rgba(255, 255, 255, 0.08) 0 1px 0 inset;
+
+      .sneaker-btn {
+        visibility: visible;
+        transform: translateY(0px);
+        opacity: 1;
+      }
     }
   }
 }

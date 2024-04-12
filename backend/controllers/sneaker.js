@@ -1,4 +1,4 @@
-const data = require("../data/data.js");
+const data = require("../data/data.json");
 
 // Get all sneakers
 exports.getSneakers = (req, res) => {
