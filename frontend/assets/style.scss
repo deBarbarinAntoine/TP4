@@ -1,5 +1,6 @@
 $secondary-color: #F0C900;
 $reduction: #09A722;
+$red: #A70922;
 $font-color: #EEEEEE;
 $dark: #0F0F0F;
 $white: #FFFFFF;
@@ -12,7 +13,6 @@ $sneaker-width: clamp(300px, 22%, 450px);
   font-style: normal;
   font-weight: normal;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -21,6 +21,145 @@ $sneaker-width: clamp(300px, 22%, 450px);
   }
 }
 
+//sneaker.html
+.main-ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+
+  .sneaker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(20px + 1vw);
+
+    .sneaker-img-ctn {
+      flex: 0.6;
+      aspect-ratio: 600/360;
+
+      img {
+        width: 85%;
+        height: 85%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .sneaker-info {
+      flex: 0.3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: "Exo 2", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      gap: calc(16px + .3vw);
+
+      .sneaker-name {
+        font-size: calc(20px + .4vw);
+        font-weight: 600;
+        margin-bottom: calc(20px + .2vw);
+      }
+      .sneaker-price {
+        display: flex;
+        align-items: flex-end;
+        gap: 1rem;
+        margin-bottom: calc(20px + .2vw);
+
+        .price,
+        .new-price {
+          font-size: calc(16px + .2vw);
+          font-weight: 580;
+        }
+        .previous-price {
+          text-decoration: line-through;
+          font-weight: 370;
+          font-size: calc(15px + .2vw);
+        }
+      }
+      .colors,
+      .sizes {
+        display: flex;
+        flex-direction: column;
+        gap: calc(12px + .2vw);
+
+        .color-list,
+        .size-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: calc(12px + .2vw);
+
+          .color,
+          .size {
+            border: $dark solid 2px;
+            border-radius: calc(5px + .2vw);
+            font-size: calc(15px + .2vw);
+            font-weight: 450;
+            text-align: center;
+          }
+          .size {
+            width: calc(30px + 1.5vw);
+            padding: calc(6px + .2vw) 0;
+          }
+          .color {
+            padding: calc(6px + .2vw) calc(10px + .4vw);
+            min-width: calc(40px + 2.5vw);
+          }
+        }
+      }
+      .label {
+        font-size: calc(16px + .3vw);
+        font-weight: 600;
+      }
+      .txt {
+        font-size: calc(14px + .3vw);
+        font-weight: 450;
+      }
+      .available {
+        color: $reduction;
+      }
+      .unavailable {
+        color: $red;
+      }
+      .reduction .reduction-ctn {
+        font-size: calc(16px + .3vw);
+        font-weight: 600;
+        color: $reduction;
+      }
+      .return-btn {
+        width: 60%;
+        margin: calc(6px + .3vw) auto;
+        padding: calc(5px + .3vw) 0;
+        cursor: pointer;
+        text-align: center;
+        font-size: calc(16px + .3vw);
+        font-weight: 580;
+        border-radius: calc(5px + .2vw);
+        background-color: $red;
+        color: $white;
+        box-shadow: rgba(0, 0, 0, 0.19) 0 5px 10px, rgba(0, 0, 0, 0.23) 0 4px 4px;
+      }
+    }
+  }
+  @media screen and (max-width: 765px) {
+    padding: 5rem 0;
+
+    .sneaker {
+      width: 80%;
+      flex-direction: column;
+
+      .sneaker-img-ctn {
+        img {
+          object-position: bottom center;
+        }
+      }
+    }
+  }
+}
+
+// index.html
 .main {
   position: relative;
   height: 100dvh;

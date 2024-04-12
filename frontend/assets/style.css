@@ -12,6 +12,147 @@
   text-decoration: none;
 }
 
+.main-ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}
+.main-ctn .sneaker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(20px + 1vw);
+}
+.main-ctn .sneaker .sneaker-img-ctn {
+  flex: 0.6;
+  aspect-ratio: 600/360;
+}
+.main-ctn .sneaker .sneaker-img-ctn img {
+  width: 85%;
+  height: 85%;
+  object-fit: cover;
+  object-position: center;
+}
+.main-ctn .sneaker .sneaker-info {
+  flex: 0.3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  gap: calc(16px + 0.3vw);
+}
+.main-ctn .sneaker .sneaker-info .sneaker-name {
+  font-size: calc(20px + 0.4vw);
+  font-weight: 600;
+  margin-bottom: calc(20px + 0.2vw);
+}
+.main-ctn .sneaker .sneaker-info .sneaker-price {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: calc(20px + 0.2vw);
+}
+.main-ctn .sneaker .sneaker-info .sneaker-price .price,
+.main-ctn .sneaker .sneaker-info .sneaker-price .new-price {
+  font-size: calc(16px + 0.2vw);
+  font-weight: 580;
+}
+.main-ctn .sneaker .sneaker-info .sneaker-price .previous-price {
+  text-decoration: line-through;
+  font-weight: 370;
+  font-size: calc(15px + 0.2vw);
+}
+.main-ctn .sneaker .sneaker-info .colors,
+.main-ctn .sneaker .sneaker-info .sizes {
+  display: flex;
+  flex-direction: column;
+  gap: calc(12px + 0.2vw);
+}
+.main-ctn .sneaker .sneaker-info .colors .color-list,
+.main-ctn .sneaker .sneaker-info .colors .size-list,
+.main-ctn .sneaker .sneaker-info .sizes .color-list,
+.main-ctn .sneaker .sneaker-info .sizes .size-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(12px + 0.2vw);
+}
+.main-ctn .sneaker .sneaker-info .colors .color-list .color,
+.main-ctn .sneaker .sneaker-info .colors .color-list .size,
+.main-ctn .sneaker .sneaker-info .colors .size-list .color,
+.main-ctn .sneaker .sneaker-info .colors .size-list .size,
+.main-ctn .sneaker .sneaker-info .sizes .color-list .color,
+.main-ctn .sneaker .sneaker-info .sizes .color-list .size,
+.main-ctn .sneaker .sneaker-info .sizes .size-list .color,
+.main-ctn .sneaker .sneaker-info .sizes .size-list .size {
+  border: #0F0F0F solid 2px;
+  border-radius: calc(5px + 0.2vw);
+  font-size: calc(15px + 0.2vw);
+  font-weight: 450;
+  text-align: center;
+}
+.main-ctn .sneaker .sneaker-info .colors .color-list .size,
+.main-ctn .sneaker .sneaker-info .colors .size-list .size,
+.main-ctn .sneaker .sneaker-info .sizes .color-list .size,
+.main-ctn .sneaker .sneaker-info .sizes .size-list .size {
+  width: calc(30px + 1.5vw);
+  padding: calc(6px + 0.2vw) 0;
+}
+.main-ctn .sneaker .sneaker-info .colors .color-list .color,
+.main-ctn .sneaker .sneaker-info .colors .size-list .color,
+.main-ctn .sneaker .sneaker-info .sizes .color-list .color,
+.main-ctn .sneaker .sneaker-info .sizes .size-list .color {
+  padding: calc(6px + 0.2vw) calc(10px + 0.4vw);
+  min-width: calc(40px + 2.5vw);
+}
+.main-ctn .sneaker .sneaker-info .label {
+  font-size: calc(16px + 0.3vw);
+  font-weight: 600;
+}
+.main-ctn .sneaker .sneaker-info .txt {
+  font-size: calc(14px + 0.3vw);
+  font-weight: 450;
+}
+.main-ctn .sneaker .sneaker-info .available {
+  color: #09A722;
+}
+.main-ctn .sneaker .sneaker-info .unavailable {
+  color: #A70922;
+}
+.main-ctn .sneaker .sneaker-info .reduction .reduction-ctn {
+  font-size: calc(16px + 0.3vw);
+  font-weight: 600;
+  color: #09A722;
+}
+.main-ctn .sneaker .sneaker-info .return-btn {
+  width: 60%;
+  margin: calc(6px + 0.3vw) auto;
+  padding: calc(5px + 0.3vw) 0;
+  cursor: pointer;
+  text-align: center;
+  font-size: calc(16px + 0.3vw);
+  font-weight: 580;
+  border-radius: calc(5px + 0.2vw);
+  background-color: #A70922;
+  color: #FFFFFF;
+  box-shadow: rgba(0, 0, 0, 0.19) 0 5px 10px, rgba(0, 0, 0, 0.23) 0 4px 4px;
+}
+@media screen and (max-width: 765px) {
+  .main-ctn {
+    padding: 5rem 0;
+  }
+  .main-ctn .sneaker {
+    width: 80%;
+    flex-direction: column;
+  }
+  .main-ctn .sneaker .sneaker-img-ctn img {
+    object-position: bottom center;
+  }
+}
+
 .main {
   position: relative;
   height: 100dvh;

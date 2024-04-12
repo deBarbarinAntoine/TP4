@@ -40,6 +40,8 @@ async function toSneakersClick(event){
     sneakersList.style.display = 'flex';
     const pos = sneakersList.offsetTop;
     window.scrollTo({ left: 0, top: pos, behavior: 'smooth'});
+    btnToSneakers.removeEventListener('click', toSneakersClick);
+    btnToSneakers.addEventListener('click', () => window.scrollTo({ left: 0, top: pos, behavior: 'smooth'}));
 }
 
 btnToSneakers.addEventListener('click', toSneakersClick);
