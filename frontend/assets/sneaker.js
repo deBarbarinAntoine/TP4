@@ -1,17 +1,9 @@
 const url = new URLSearchParams(window.location.search);
 const sneakerId = parseInt(url.get('id'));
-const baseUrl = 'http://localhost:3000/';
 const mainCtn = document.querySelector('.main-ctn');
 
-
-async function fetchSneaker() {
-    const getSneaker = await fetch(`${baseUrl}sneaker/${sneakerId}`);
-    const data = await getSneaker.json();
-    return data.sneaker;
-}
-
 async function loadSneaker() {
-    const sneaker = await fetchSneaker();
+    const sneaker = await fetchSneaker(sneakerId);
     let lowerPrice, priceClass, reduction, colors, sizes;
     lowerPrice = priceClass = reduction = colors = sizes = '';
     let price = parseInt(sneaker.price)
@@ -31,10 +23,18 @@ async function loadSneaker() {
     }
     const available = sneaker.available ? `<span class="label available">Available</span>` :
         `<span class="label unavailable">Not available</span>`;
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    let favoriteImg = 'red-add-favorite';
+    favorites.forEach(favorite => {
+        if (favorite.id === sneaker.id.toString()) {
+            favoriteImg = 'red-remove-favorite';
+        }
+    })
     const sneakerDiv = `
         <div class="sneaker">
             <div class="sneaker-img-ctn">
-                <img src="${baseUrl}${sneaker.img_1}" alt="${sneaker.name} image" />
+                <img class="favorite-icon" data-id="${sneaker.id}" src="./assets/img/${favoriteImg}.png" alt="favorite-icon" />
+                <img class="sneaker-img" src="${baseUrl}${sneaker.img_1}" alt="${sneaker.name} image" />
             </div>
             <div class="sneaker-info">
                 <div class="sneaker-name">${sneaker.name}</div>
@@ -45,11 +45,14 @@ async function loadSneaker() {
                 <div class="delivery-time"><span class="label">Delivery time: </span><span class="txt">${sneaker.delivery_time} days</span></div>
                 ${available}
                 <div class="sizes"><span class="label">Sizes available: </span><div class="size-list">${sizes}</div></div>
-                <a class="return-btn" href="./index.html">Return</a>
+                <a class="return-btn" href="./index.html?sneakers=visible">Return</a>
             </div>
         </div>
     `;
     mainCtn.innerHTML = sneakerDiv;
+
+    const favorite = document.querySelector('img.favorite-icon');
+    favorite.addEventListener('click', clickFavorite);
 }
 
 loadSneaker();

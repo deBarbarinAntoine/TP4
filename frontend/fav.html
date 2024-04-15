@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="title">
+            <span class="title-txt">Your favorites:</span>
+
+            <div class="header-btns">
+                <div class="remove-all-btn">Remove all favorites</div>
+                <a class="return-btn" href="./index.html?sneakers=visible">Return</a>
+            </div>
+        </div>
+        <div class="comment">Drag and drop any item to change the order</div>
+        <div class="favorites-list">
+<!--            this part will be filled by the js script imported bellow-->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="assets/utils.js"></script>
+    <script src="assets/favorites.js"></script>
+</body>
+</html>
